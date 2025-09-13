@@ -9,13 +9,13 @@ package() {
 
 setup_ssh() {
   mkdir -p ~/.ssh/
-  echo "$SSH_PRIVATE_KEY" > ~/.ssh/"$HOST_KEY"
-  chmod 600 ~/.ssh/"$HOST_KEY"
+  echo "$SSH_PRIVATE_KEY" > ~/.ssh/"$HOST_KEY".pri.key
+  chmod 600 ~/.ssh/"$HOST_KEY".pri.key
   cat >> ~/.ssh/config <<END
 Host $HOST_KEY
   HostName $SSH_HOST
   User $SSH_USER
-  IdentityFile ~/.ssh/$HOST_KEY
+  IdentityFile ~/.ssh/$HOST_KEY.pri.key
   StrictHostKeyChecking no
 END
 }
