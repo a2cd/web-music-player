@@ -1,7 +1,9 @@
 #!/bin/sh
 
 package() {
-  
+  mkdir dist/
+  # 简单打包dist
+  cp -r index.html style.css player.js favicon.ico img/ dist/
 }
 
 

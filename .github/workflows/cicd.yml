@@ -23,9 +23,7 @@ jobs:
       - name: print-timezone-info
         run: date && timedatectl
       - name: package
-        run: |
-          mkdir dist/
-          cp -r index.html style.css player.js favicon.ico img/ dist/
+        run: . scripts/cicd/funcs.sh && package
       - name: setup-ssh
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
