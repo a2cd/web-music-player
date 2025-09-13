@@ -362,8 +362,8 @@ function scrollToCurrent() {
 
 async function fetchSongs() {
   try {
-    // const res = await fetch(MUSIC_API_BASE + 'songs.json');
-    const res = await fetch('songs.json');
+    const res = await fetch(MUSIC_API_BASE + 'songs.json');
+    // const res = await fetch('songs.json');
     if (!res.ok) throw new Error();
     return await res.json();
   } catch {
