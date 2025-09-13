@@ -342,11 +342,7 @@ function renderPlaylist() {
  * 点击歌曲标题时，滚动到当前播放的歌曲位置
  */
 $('#song-title').on('click', function() {
-  var $cur = $('#playlist li');
-  var height = $cur[0].offsetHeight;
-  var $list = $('#playlist');
-  // 滚动至
-  $list.animate({scrollTop: height * currentIndex}, 300);
+  scrollToCurrent();
 });
 
 function updatePlaylistActive() {
@@ -354,6 +350,17 @@ function updatePlaylistActive() {
 
   var currentPositionInfo = (songs.length ? (currentIndex+1) : 0) + '/' + songs.length;
   $('#playlist-info').text(currentPositionInfo);
+
+  scrollToCurrent();
+}
+
+
+function scrollToCurrent() {
+  var $cur = $('#playlist li');
+  var height = $cur[0].offsetHeight;
+  var $list = $('#playlist');
+  // 滚动至
+  $list.animate({scrollTop: height * currentIndex}, 300);
 }
 
 
