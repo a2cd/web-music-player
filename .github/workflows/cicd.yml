@@ -25,7 +25,7 @@ jobs:
       - name: package
         run: . scripts/cicd/funcs.sh && package
       - name: build info
-        run: ls -la
+        run: ls -la ./dist/
       - name: setup-ssh
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
