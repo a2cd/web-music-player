@@ -29,7 +29,7 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          HOST_KEY: ssh_host_rsa_key
+          HOST_KEY: github_actions
         run: . scripts/cicd/funcs.sh && setup_ssh
       - name: deploy
         run: . scripts/cicd/funcs.sh && sync_files && reload_nginx
