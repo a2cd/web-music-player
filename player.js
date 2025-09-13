@@ -6,28 +6,26 @@ const FALLBACK_SONGS = [
   {
     title: 'Somero',
     artist: 'Unknown',
-    name: 'Somero.mp3'
+    name: 'Somero.mp3',
   },
   {
-    "title": "谁能明白我",
-    "artist": "林子祥",
-    "name": "谁能明白我.mp3"
+    title: '谁能明白我',
+    artist: '林子祥',
+    name: '谁能明白我.mp3',
   },
   {
-    "title": "月亮翻过小山坡",
-    "artist": "王海颖&孙圳翰",
-    "name": "月亮翻过小山坡.flac"
-  }
+    title: '月亮翻过小山坡',
+    artist: '王海颖&孙圳翰',
+    name: '月亮翻过小山坡.flac',
+  },
 ];
 
-
-
-var songs = [];
-var currentIndex = 0;
-var playMode = 'order'; // order | single | random
-var audio = $('#audio')[0]; // 播放器组件
-var isDraggingVolumeBar = false; // 是否正在拖动音量条
-var lastVolume = DEFAULT_VOLUME; // 记录上次非静音时的音量
+let songs = [];
+let currentIndex = 0;
+let playMode = 'order'; // order | single | random
+let audio = $('#audio')[0]; // 播放器组件
+let isDraggingVolumeBar = false; // 是否正在拖动音量条
+let lastVolume = DEFAULT_VOLUME; // 记录上次非静音时的音量
 
 // ======================== audio control ========================
 

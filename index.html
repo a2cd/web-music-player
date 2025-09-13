@@ -1,73 +1,83 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Music Player</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-<body>
-  <main class="player-container">
-    <section class="player-main">
-      <div class="controls-area">
-        <div class="song-info">
-          <span id="song-title" style="cursor: pointer;" title="列表位置">歌曲标题</span>
-          <span id="song-artist">歌手</span>
-        </div>
-        <div class="progress-area">
-          <span id="current-time">00:00</span>
-          <div class="progress-bar" id="progress-bar">
-            <div class="progress-fill"></div>
-            <div class="progress-thumb"></div>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Music Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <main class="player-container">
+      <section class="player-main">
+        <div class="controls-area">
+          <div class="song-info">
+            <span id="song-title" style="cursor: pointer;" title="列表位置">歌曲标题</span>
+            <span id="song-artist">歌手</span>
           </div>
-          <span id="duration">00:00</span>
-        </div>
-        <div class="buttons">
-          <button id="prev-btn" class="icon-btn" title="上一首">
-            <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 12L18 19V5L7 12ZM6 5H4V19H6V5Z" fill="currentColor"/></svg>
-          </button>
-          <button id="play-btn" class="icon-btn" title="播放/暂停">
-            <svg class="icon-svg play-icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><polygon points="8,5 21,12 8,19" fill="currentColor"/></svg>
-            <svg class="icon-svg pause-icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" style="display:none"><rect x="6" y="5" width="4" height="14" fill="currentColor"/><rect x="14" y="5" width="4" height="14" fill="currentColor"/></svg>
-          </button>
-          <button id="next-btn" class="icon-btn" title="下一首">
-            <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M17 12L6 5V19L17 12ZM18 5H20V19H18V5Z" fill="currentColor"/></svg>
-          </button>
-          <button id="mode-btn" class="icon-btn" title="切换播放模式">
-            <img class="mode-svg mode-order" src="img/顺序播放.svg" width="22" height="22" style="display:inline" alt="顺序播放" />
-            <img class="mode-svg mode-single" src="img/单曲循环.svg" width="22" height="22" style="display:none" alt="单曲循环" />
-            <img class="mode-svg mode-random" src="img/随机播放.svg" width="22" height="22" style="display:none" alt="随机播放" />
-          </button>
-        </div>
-        <div class="volume-area">
-          <span class="icon-volume" id="volume-icon">
-            <img class="volume-on" src="img/喇叭.svg" width="28" height="28" alt="音量" style="display:inline" />
-            <img class="volume-mute" src="img/静音.svg" width="28" height="28" alt="静音" style="display:none" />
-          </span>
-          <div class="volume-bar" id="volume-bar" style="position:relative;">
-            <div class="volume-track"></div>
-            <div class="volume-fill" id="volume-fill"></div>
-            <div class="volume-thumb" id="volume-thumb"></div>
-            <span class="volume-value" id="volume-value">50</span>
+          <div class="progress-area">
+            <span id="current-time">00:00</span>
+            <div class="progress-bar" id="progress-bar">
+              <div class="progress-fill"></div>
+              <div class="progress-thumb"></div>
+            </div>
+            <span id="duration">00:00</span>
+          </div>
+          <div class="buttons">
+            <button id="prev-btn" class="icon-btn" title="上一首">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path d="M7 12L18 19V5L7 12ZM6 5H4V19H6V5Z" fill="currentColor" />
+              </svg>
+            </button>
+            <button id="play-btn" class="icon-btn" title="播放/暂停">
+              <svg class="icon-svg play-icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+                <polygon points="8,5 21,12 8,19" fill="currentColor" />
+              </svg>
+              <svg class="icon-svg pause-icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" style="display:none">
+                <rect x="6" y="5" width="4" height="14" fill="currentColor" />
+                <rect x="14" y="5" width="4" height="14" fill="currentColor" />
+              </svg>
+            </button>
+            <button id="next-btn" class="icon-btn" title="下一首">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path d="M17 12L6 5V19L17 12ZM18 5H20V19H18V5Z" fill="currentColor" />
+              </svg>
+            </button>
+            <button id="mode-btn" class="icon-btn" title="切换播放模式">
+              <img class="mode-svg mode-order" src="img/顺序播放.svg" width="22" height="22" style="display:inline" alt="顺序播放" />
+              <img class="mode-svg mode-single" src="img/单曲循环.svg" width="22" height="22" style="display:none" alt="单曲循环" />
+              <img class="mode-svg mode-random" src="img/随机播放.svg" width="22" height="22" style="display:none" alt="随机播放" />
+            </button>
+          </div>
+          <div class="volume-area">
+            <span class="icon-volume" id="volume-icon">
+              <img class="volume-on" src="img/喇叭.svg" width="28" height="28" alt="音量" style="display:inline" />
+              <img class="volume-mute" src="img/静音.svg" width="28" height="28" alt="静音" style="display:none" />
+            </span>
+            <div class="volume-bar" id="volume-bar" style="position:relative;">
+              <div class="volume-track"></div>
+              <div class="volume-fill" id="volume-fill"></div>
+              <div class="volume-thumb" id="volume-thumb"></div>
+              <span class="volume-value" id="volume-value">50</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <audio id="audio" preload="auto"></audio>
-    <!-- 歌曲列表区域 -->
-    <section class="playlist-section">
-      <div class="playlist-header">
-        <img src="img/播放列表.svg" width="22" height="22" alt="播放列表" style="vertical-align:middle;">
-        <span style="margin-left:8px;font-weight:bold;">歌曲列表</span>
-      </div>
-      <ul class="playlist" id="playlist">
-        <!-- 歌曲项由 JS 动态插入 -->
-      </ul>
-      <div class="playlist-info" id="playlist-info" style="text-align:right;padding:4px 18px 0 0;color:#666;font-size:13px;"></div>
-    </section>
-  </main>
-  <script src="jquery-3.7.1.min.js"></script>
-  <script src="player.js"></script>
-</body>
+      </section>
+      <audio id="audio" preload="auto"></audio>
+      <!-- 歌曲列表区域 -->
+      <section class="playlist-section">
+        <div class="playlist-header">
+          <img src="img/播放列表.svg" width="22" height="22" alt="播放列表" style="vertical-align:middle;" />
+          <span style="margin-left:8px;font-weight:bold;">歌曲列表</span>
+        </div>
+        <ul class="playlist" id="playlist">
+          <!-- 歌曲项由 JS 动态插入 -->
+        </ul>
+        <div class="playlist-info" id="playlist-info" style="text-align:right;padding:4px 18px 0 0;color:#666;font-size:13px;"></div>
+      </section>
+    </main>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="player.js"></script>
+  </body>
 </html>
