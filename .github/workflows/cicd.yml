@@ -24,6 +24,8 @@ jobs:
         run: date && timedatectl
       - name: package
         run: . scripts/cicd/funcs.sh && package
+      - name: build info
+        run: ls -la
       - name: setup-ssh
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
