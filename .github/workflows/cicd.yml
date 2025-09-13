@@ -1,0 +1,37 @@
+name: Web Music Player CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  TZ: Asia/Shanghai
+  BUILD_GREETING: hello
+  SEGMENT_DOWNLOAD_TIMEOUT_MINS: '5'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [ 20 ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # pull代码
+      - name: print-timezone-info
+        run: date && timedatectl
+      - name: package
+        run: |
+          mkdir dist/
+          cp -r index.html style.css player.js favicon.ico img/ dist/
+      - name: setup-ssh
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOST_KEY: a2cd
+        run: . scripts/cicd/funcs.sh && setup_ssh
+      - name: deploy
+        run: . scripts/cicd/funcs.sh && sync_files && reload_nginx
