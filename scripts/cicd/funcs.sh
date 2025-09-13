@@ -21,9 +21,9 @@ END
 }
 
 sync_files() {
-  rsync -avz --progress ./dist/ a2cd:/usr/local/nginx/html/musics/dist/
+  rsync -avz --progress ./dist/ root:/usr/local/nginx/html/musics/dist/
 }
 
 reload_nginx() {
-  ssh a2cd "docker exec nginx nginx -s reload"
+  ssh root "docker exec nginx nginx -s reload"
 }
