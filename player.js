@@ -209,13 +209,9 @@ function updateProgressByEvent(e, bar, showTime) {
 function loadSong(index) {
   currentIndex = index;
   var song = songs[index];
-  audio.src = song.url || song.src || song.name;
-  if (song.cover) {
-    $('#cover').attr('src', song.cover);
-  }
+  audio.src = song.src;
   $('#song-title').text(song.title);
   $('#song-artist').text(song.artist);
-  updatePlaylistActive();
 }
 
 
@@ -263,6 +259,7 @@ $('#prev-btn').click(() => {
     loadSong(prev);
     playSong();
   }
+  updatePlaylistActive();
 });
 
 
@@ -274,6 +271,7 @@ $('#next-btn').click(() => {
     loadSong(next);
     playSong();
   }
+  updatePlaylistActive();
 });
 
 
@@ -330,6 +328,7 @@ function renderPlaylist() {
         if (currentIndex !== idx) {
           loadSong(idx);
           playSong();
+          updatePlaylistActive();
         }
       });
     $playlist.append(li);
@@ -352,7 +351,6 @@ function updatePlaylistActive() {
   scrollToCurrent();
 }
 
-
 function scrollToCurrent() {
   var $cur = $('#playlist li');
   var height = $cur[0].offsetHeight;
@@ -364,7 +362,8 @@ function scrollToCurrent() {
 
 async function fetchSongs() {
   try {
-    const res = await fetch(MUSIC_API_BASE + 'songs.json');
+    // const res = await fetch(MUSIC_API_BASE + 'songs.json');
+    const res = await fetch('songs.json');
     if (!res.ok) throw new Error();
     return await res.json();
   } catch {
