@@ -13,10 +13,6 @@ env:
 
 jobs:
   build:
-    strategy:
-      fail-fast: true
-      matrix:
-        node-version: [ 20 ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4 # pull代码
@@ -24,14 +20,11 @@ jobs:
         run: date && timedatectl
       - name: package
         run: . scripts/cicd/funcs.sh && package
-      - name: build info
-        run: ls -la ./dist/
       - name: setup-ssh
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          HOST_KEY: github_actions
         run: . scripts/cicd/funcs.sh && setup_ssh
       - name: deploy
         run: . scripts/cicd/funcs.sh && sync_files && reload_nginx
